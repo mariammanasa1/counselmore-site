@@ -100,18 +100,14 @@
   </style>
 </head>
 <body>
-  <header>
-    <img src="CounselMore.jpg" alt="CounselMore Logo" />
-    <h1>CounselMore</h1>
-    <p>Your partner in smarter, streamlined college counseling.</p>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html#resources">Resources</a>
-    </div>
-  </header>
+  <div id="navbar"></div>
+<script>
+  fetch('navbar.html')
+    .then(r => r.text())
+    .then(html => { document.getElementById('navbar').innerHTML = html; })
+    .catch(err => console.error('Navbar load failed:', err));
+</script>
+
 
   <div class="content">
     <h2>What Our Users Say</h2>

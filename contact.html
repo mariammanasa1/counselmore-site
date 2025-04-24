@@ -74,16 +74,15 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Contact Us</h1>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </header>
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('navbar').innerHTML = html; })
+      .catch(err => console.error('Navbar load failed:', err));
+  </script>
+  
+
   <main>
     <form action="https://formsubmit.co/halent30@yahoo.com" method="POST">
       <!-- Replace with your actual GitHub username -->
