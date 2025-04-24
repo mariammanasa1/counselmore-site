@@ -21,6 +21,9 @@
     header img {
       max-width: 120px;
       margin-bottom: 0.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      height: 120px;
     }
     .nav-links {
       margin-top: 10px;
@@ -81,10 +84,22 @@
       font-size: 0.9em;
       text-align: right;
     }
-    .testimonial-image {
-      width: 100%;
-      border-radius: 6px;
-      margin-top: 15px;
+    .category-filter {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #e9f3fc;
+      border: 1px solid #01295f;
+      border-radius: 20px;
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: #01295f;
+      color: white;
     }
     footer {
       text-align: center;
@@ -110,15 +125,22 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="contact.html">Contact</a>
       <a href="index.html#resources">Resources</a>
     </div>
   </header>
-  
+
   <div class="content">
     <h2>What Our Users Say</h2>
     <p>Hear from counselors, students, and parents who have transformed their college counseling experience with CounselMore.</p>
-    
+
+    <div class="category-filter">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">High School Counselors</button>
+      <button class="filter-btn">Independent Counselors</button>
+      <button class="filter-btn">Students & Parents</button>
+    </div>
+
     <div class="testimonial">
       <div class="testimonial-content">
         "CounselMore transformed how I manage my student meetings. Everything is just simpler now. I can focus on what matters most—guiding my students—instead of getting bogged down in paperwork and disorganized notes. The college list building tool has been a game-changer for us!"
@@ -126,16 +148,15 @@
       <div class="testimonial-author">Patricia Martinez</div>
       <div class="testimonial-role">High School Counselor, Lincoln High School</div>
     </div>
-    
+
     <div class="testimonial">
       <div class="testimonial-content">
         "The platform is incredibly intuitive. It saves me hours every week! As an independent counselor managing my own practice, CounselMore has become my virtual assistant, helping me stay organized and provide better service to my clients. The automated follow-ups alone are worth the price."
       </div>
       <div class="testimonial-author">David Washington</div>
       <div class="testimonial-role">Independent College Counselor</div>
-      <img src="images/counselor-office.jpg" alt="Counselor Office" class="testimonial-image">
     </div>
-    
+
     <div class="testimonial">
       <div class="testimonial-content">
         "Before CounselMore, our counseling department was drowning in spreadsheets and sticky notes. Now we have a centralized system that everyone can access. The transition was smooth, and the support team was incredibly helpful throughout the process."
@@ -143,7 +164,7 @@
       <div class="testimonial-author">Jennifer Kim</div>
       <div class="testimonial-role">Director of College Counseling, Westridge Academy</div>
     </div>
-    
+
     <div class="testimonial">
       <div class="testimonial-content">
         "As a parent, I appreciate having visibility into my daughter's college application process. The parent portal keeps me informed without having to constantly ask my daughter or her counselor for updates. It's reduced a lot of stress in our household during this important time."
@@ -151,7 +172,7 @@
       <div class="testimonial-author">Michael Rodriguez</div>
       <div class="testimonial-role">Parent</div>
     </div>
-    
+
     <div class="testimonial">
       <div class="testimonial-content">
         "I was able to keep track of all my application deadlines and tasks without feeling overwhelmed. Being able to see everything in one place made the process much less stressful. I definitely recommend CounselMore to other students!"
@@ -159,10 +180,10 @@
       <div class="testimonial-author">Aisha Johnson</div>
       <div class="testimonial-role">Student, Class of 2024</div>
     </div>
-    
+
     <p><a href="index.html">← Back to Home</a></p>
   </div>
-  
+
   <footer>
     <div>&copy; 2025 CounselMore. All rights reserved.</div>
     <div class="footer-links">
