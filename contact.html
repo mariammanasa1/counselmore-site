@@ -1,10 +1,11 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us - CounselMore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Contact Us | CounselMore</title>
+  <link rel="stylesheet" href="styles.css">
+
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -71,9 +72,19 @@
     button:hover {
       background: #318f95;
     }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    #statusMsg {
+      margin-top: 1rem;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
+  <!-- Navbar include -->
   <div id="navbar"></div>
   <script>
     fetch('navbar.html')
@@ -81,24 +92,49 @@
       .then(html => { document.getElementById('navbar').innerHTML = html; })
       .catch(err => console.error('Navbar load failed:', err));
   </script>
-  
 
-  <main>
-    <form action="https://formsubmit.co/halent30@yahoo.com" method="POST">
-      <!-- Replace with your actual GitHub username -->
-      <input type="hidden" name="_next" value="https://h-t117.github.io/success.html">
-      
+  <main class="container">
+    <h1>Contact Us</h1>
+    <form id="contactForm">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required />
+      <input id="name" name="name" type="text" required />
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+      <input id="email" name="email" type="email" required />
 
       <label for="message">Message</label>
       <textarea id="message" name="message" rows="6" required></textarea>
 
       <button type="submit">Send Message</button>
     </form>
+    <p id="statusMsg"></p>
   </main>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = document.getElementById('statusMsg');
+      status.textContent = 'Sending…';
+
+      try {
+        const formData = new FormData(e.target);
+        const response = await fetch('/contact', {
+          method: 'POST',
+          body: new URLSearchParams(formData)
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          status.textContent = '✅ Your message has been sent! Check your inbox for confirmation.';
+          e.target.reset();
+        } else {
+          status.textContent = '❌ Oops—something went wrong. Please try again later.';
+        }
+      } catch (err) {
+        console.error(err);
+        status.textContent = '❌ Network error. Please try again.';
+      }
+    });
+  </script>
 </body>
 </html>
